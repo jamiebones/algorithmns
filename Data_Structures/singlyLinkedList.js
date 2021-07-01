@@ -107,7 +107,7 @@ class SinglyLinkedList {
     }
     //get the node here
     
-    let prevNode = this.get(index - 1, value);
+    let prevNode = this.get(index - 1);
     if (!prevNode) return;
     let prevNextNode = prevNode.next;
     prevNode.next = nodeToInsert;
