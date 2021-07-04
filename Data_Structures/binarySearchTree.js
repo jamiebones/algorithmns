@@ -137,6 +137,8 @@ bst.insert(22)
 const inorder = bst.DFSInOrder();
 const preorder = bst.preOrderDFS();
 const postorder = bst.DFSPostOrder()
+const bfs = bst.BFS()
 console.log("inorder: ", inorder);
 console.log("preorder: ", preorder);
 console.log("postorder: ", postorder);
+console.log("bfs: ", bfs);
