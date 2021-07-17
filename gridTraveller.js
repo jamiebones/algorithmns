@@ -15,8 +15,25 @@ const gridTravellerMemo = (m, n, memo = {}) => {
   return memo[key];
 };
 
-console.log(gridTravellerMemo(2, 2));
-console.log(gridTravellerMemo(18, 18));
+const gridTravellerTabulation = ( m, n ) => {
+  const tables = Array(m + 1).fill().map(()=> Array(n + 1).fill(0));
+  tables[1][1] = 1;
+  for (let i=0; i <= m; i++){
+    for (let j=0; j <=n; j++ ){
+      const current = tables[i][j];
+      if ( j + 1 <= n ){
+        tables[i][j + 1] += current;
+      }
+      if ( i + 1 <= m ){
+        tables[i + 1][j] += current;
+      }
+    }
+  }
+  return tables[m][n]
+}
+
+console.log(gridTravellerTabulation(18, 18));
+//console.log(gridTravellerMemo(18, 18));
 // console.log("*******************");
 // console.log(gridTraveller(2, 2));
-// console.log(gridTraveller(3, 3));
+//console.log(gridTraveller(3, 3));

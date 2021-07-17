@@ -30,7 +30,7 @@ const fibBottomUp = (n) => {
   return arr[n];
 };
 
-let num = 100;
+let num = 6;
 
 // console.time("fibMemoi");
 // console.log(fibMemo(num));
