@@ -3,6 +3,13 @@ function reverseString( word ){
     return splitword;
 }
 
+function reverseStringRecursion( input, memo={} ){
+    if ( input == "" ) {
+        return ""
+    }
+    let subElement = input.substr(1);
+    return reverseStringRecursion(subElement) + input.charAt(0)
+}
 
-const answer = reverseString("hello my name is james");
-console.log(answer);
+const answer = reverseStringRecursion("my name is jamiebones please act like a good man please there");
+console.log(answer);  
