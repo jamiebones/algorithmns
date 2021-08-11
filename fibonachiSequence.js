@@ -18,7 +18,7 @@ const fibMemo = (num, memoArray = []) => {
     memoArray[num] = result;
   }
 
-  return result;
+  return memoArray;
 };
 //using tabulation
 const fibBottomUp = (n) => {
@@ -40,6 +40,4 @@ let num = 6;
 // console.log(fibonachi(num));
 // console.timeEnd("fibnormal");
 
-console.time("fibB");
-console.log(fibBottomUp(num));
-console.timeEnd("fibB");
+console.log(fibMemo(4))
