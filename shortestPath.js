@@ -1,4 +1,3 @@
-
 /**djistra algorithm */
 const shortestPath = (edges, nodeA, nodeB) => {
   const graph = buildGraph(edges);
@@ -18,6 +17,26 @@ const shortestPath = (edges, nodeA, nodeB) => {
   return -1;
 };
 
+const shortestPathDistance = (distances, cityA, cityB ) => {
+  const queue = [[cityA, 0 ]];
+  let visited = new Set([cityA]);
+  while (queue.length > 0 ) {
+    const [node, distance ] = queue.shift();
+    if ( node === cityB ) return distance
+    for (let neighbor of distances[node]){
+      if (! visited.has(neighbor.city)){
+        visited.add(neighbor.city);
+        queue.push([neighbor.city, distance + neighbor.distance])
+      }
+    }
+  }
+
+}
+
+
+
+
+
 const buildGraph = (edges) => {
   let graph = {};
   for (let edge of edges) {
@@ -36,7 +55,29 @@ const edges = [
   ["z", "y"],
   ["z", "v"],
   ["w", "v"],
-  ["v", "t"]
+  ["v", "t"],
 ];
 
-console.log(shortestPath(edges, "w", "z"));
+const distances = {
+  Abj: [
+    { city: "Uyo", distance: 200 },
+    { city: "Lagos", distance: 1200 },
+    { city: "Bayelsa", distance: 1300 },
+
+  ],
+  Uyo: [
+    { city: "Abj", distance: 200 },
+    { city: "Togo", distance: 1200 },
+    { city: "Bayelsa", distance: 700 },
+  ],
+  Lagos: [
+    { city: "Abj", distance: 1200 },
+    { city: "Lome", distance: 1200 },
+    { city: "Bayelsa", distance: 500 },
+  ],
+  Lome: [],
+  Bayelsa: [],
+  Togo: []
+};
+
+console.log(shortestPathDistance(distances, "Abj", "Bayelsa"));

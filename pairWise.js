@@ -2,7 +2,7 @@ const pairWise2 = (array, target) => {
     let pairIndices = [];
   
     for (let i = 0; i < array.length; i++) {
-      debugger
+    
       for (let j = i + 1; j < array.length; j++) {
         if (
           array[i] + array[j] == target &&
