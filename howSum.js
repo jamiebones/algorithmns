@@ -1,16 +1,21 @@
-const howSum = (targetSum, numbers) => {
-  //base case
-  if (targetSum === 0) return [];
-  if (targetSum < 0) return null;
-  for (let num of numbers) {
-    const remainder = targetSum - num;
-    const remainderResult = howSum(remainder, numbers);
-    if (remainderResult !== null) {
-      return [...remainderResult, num];
-    }
-  }
-  return null;
-};
+let answerArray = []
+// const howSum = (targetSum, numbers) => {
+//   debugger;
+//   //base case
+  
+//   if (targetSum === 0) return [];
+//   if (targetSum < 0) return null;
+//   for (let num of numbers) {
+//     const remainder = targetSum - num;
+//     const remainderResult = howSum(remainder, numbers);
+//     if (remainderResult !== null) {
+//       console.log([...remainderResult, num]);
+//       return [...remainderResult, num]
+      
+//     }
+//   }
+//   return null;
+// };
 
 const howSumMemo = (targetSum, numbers, memo = {}) => {
   //base case
@@ -29,4 +34,28 @@ const howSumMemo = (targetSum, numbers, memo = {}) => {
   return null;
 };
 
-console.log(howSumMemo(50, [23,12,5,4]));
+
+const howSum = (target, numbers ) => {
+  //base case
+  if ( target === 0 ) return [];
+  if ( target < 0 ) return null;
+  
+  let combinationResult = null;
+
+  for ( let num of numbers ){
+    const remainder = target - num;
+    const remainderResult = howSum(remainder, numbers);
+    if ( remainderResult !== null ){
+    
+      const combination = [...remainderResult, num];
+      if ( combinationResult === null || combination.length === combinationResult.length){
+        combinationResult = combination;
+      }
+      
+    }
+  }
+ 
+  return combinationResult;
+}
+
+console.log(howSum(5, [4,1,2]));
