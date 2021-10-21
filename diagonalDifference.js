@@ -3,17 +3,14 @@ function diagonalDifference(arr) {
   let diagonalRightSum = 0;
   for (let i = 0; i < arr.length; i++) {
     let j = i;
+    let k = arr.length - 1 - i;
     let sum = arr[i][j];
     diagonalLeftSum += sum;
+    diagonalRightSum += arr[i][k];
   }
 
-  for (let i = 0; i < arr.length; i++) {
-    let j = (arr.length - 1) - i;
-    let sum = arr[i][j];
-    diagonalRightSum += sum;
-  }
-  if ( diagonalLeftSum > diagonalRightSum ){
-      return diagonalLeftSum- diagonalRightSum;
+  if (diagonalLeftSum > diagonalRightSum) {
+    return diagonalLeftSum - diagonalRightSum;
   }
   return diagonalRightSum - diagonalLeftSum;
 }
